@@ -59,3 +59,10 @@ const questions = [
     message: "What is your email address?",
   },
 ];
+
+const init = async () => {
+  const answers = await inquirer.prompt(questions);
+  console.log(answers);
+};
+
+init();
