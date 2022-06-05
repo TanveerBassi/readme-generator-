@@ -9,7 +9,7 @@ const questions = [
   {
     name: "description",
     type: "input",
-    message: "What is the title of the project?",
+    message: "Please enter a description for your project?",
   },
   {
     name: "installation",
@@ -62,6 +62,7 @@ const questions = [
 
 const init = async () => {
   const answers = await inquirer.prompt(questions);
+
   console.log(answers);
 };
 
