@@ -1,3 +1,4 @@
+const fs = require("fs");
 const inquirer = require("inquirer");
 
 const questions = [
@@ -5,21 +6,44 @@ const questions = [
     name: "projectTitle",
     type: "input",
     message: "What is the title of the project?",
+    validate(answers) {
+      if (!answers) {
+        return "Please enter a title.";
+      }
+      return true;
+    },
   },
   {
     name: "description",
     type: "input",
     message: "Please enter a description for your project?",
+    validate(answers) {
+      if (!answers) {
+        return "Please enter a description.";
+      }
+      return true;
+    },
   },
   {
-    name: "installation",
+    //confirm installation details
+    type: "confirm",
+    message: "Would you like to add project installation details?",
+    name: "confirmInstall",
+  },
+  {
+    //confirm installation details
+    // when: "confirmInstall",
     type: "input",
-    message: "What steps should be followed to install the app?",
+    message: "Enter installation details here:",
+    name: "projectInstall",
+    when(answers) {
+      return answers.confirmInstall;
+    },
   },
   {
     name: "usage",
     type: "input",
-    message: "Which instructions should be followed?",
+    message: "Which usage instructions should be followed?",
   },
   {
     name: "license",
@@ -43,6 +67,7 @@ const questions = [
     type: "input",
     message: "Would you like contribute to the project?",
   },
+
   {
     name: "tests",
     type: "input",
@@ -60,10 +85,27 @@ const questions = [
   },
 ];
 
+// add function to generate ReadMe
+
+const generateReadMe = (answers) => {
+  const renderInstallation = (confirmInstall, projectInstall) => {
+    if (confirmInstall) {
+      return `## Installation Steps
+      ${projectInstall}`;
+    } else {
+      return "";
+    }
+  };
+  return `${answers.projectTitle}
+  ${renderInstallation(answers.confirmInstall, answers.projectInstall)}
+  `;
+};
+
 const init = async () => {
   const answers = await inquirer.prompt(questions);
 
-  console.log(answers);
+  const readMe = generateReadMe(answers);
+  console.log("readme", readMe);
 };
 
 init();
