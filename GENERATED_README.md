@@ -1,4 +1,4 @@
-# README.md ![badge](https://img.shields.io/badge/Apache%202.0-license-green)
+# Tanveer's Project ![badge](https://img.shields.io/badge/MIT-license-green)
 ## Contents
 - [Description](#description)
 - [Installation](#installation)
@@ -8,19 +8,19 @@
 
 - [Questions](#questions)
 ## Description
-To create a beautiful README.md dynamically
+A coding app
 ## Installation
 ```
 npm install
 ```
 ## Usage
 ```
-npm start
+npm run start
 ```
 ## License
-Apache 2.0
+MIT
 ## Contributions
-Do the above and make a merge request
+pull request 
 
 ## Questions
 Please contact me via email at tanveer13a551@gmail.com or via my GitHub repo at https://github.com/TanveerBassi
