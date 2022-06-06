@@ -1,4 +1,4 @@
-# README.md ![badge](https://img.shields.io/badge/Apache%202.0-license-green)
+# sdf ![badge](https://img.shields.io/badge/Apache%202.0-license-green)
 ## Contents
 - [Description](#description)
 - [Installation](#installation)
@@ -8,19 +8,19 @@
 
 - [Questions](#questions)
 ## Description
-A professional README.md that is dynamically rendered
+sdf
 ## Installation
 ```
-npm install
+sdf
 ```
 ## Usage
 ```
-npm start
+sdf
 ```
 ## License
 Apache 2.0
 ## Contributions
-Contact me on tanveer13a551@gmail.com
+sdf
 
 ## Questions
-Please contact me via email at tanveer13a551@gmail.com or via my GitHub repo at https://github.com/TanveerBassi
+Please contact me via email at sdf or via my GitHub repo at https://github.com/sdf

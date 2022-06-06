@@ -148,7 +148,7 @@ const init = async () => {
 
   console.log(
     figlet.textSync("README generated!", {
-      font: "Ghost",
+      font: "bubble",
       horizontalLayout: "default",
       verticalLayout: "default",
       width: 40,
