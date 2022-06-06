@@ -1,5 +1,6 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
+const figlet = require("figlet");
 
 const questions = [
   {
@@ -25,10 +26,9 @@ const questions = [
     },
   },
   {
-    //confirm installation details
-    type: "confirm",
-    message: "Would you like to add project installation details?",
-    name: "confirmInstall",
+    name: "installation",
+    type: "input",
+    message: "What steps should be followed to install the app?",
   },
   {
     //confirm installation details
@@ -67,6 +67,14 @@ const questions = [
     type: "input",
     message: "Would you like contribute to the project?",
   },
+  {
+    name: "contributions",
+    type: "input",
+    message: "What process should be followed to contribute to the project?",
+    when: (answer) => {
+      return answer.contributionConfirmation;
+    },
+  },
 
   {
     name: "tests",
@@ -88,24 +96,65 @@ const questions = [
 // add function to generate ReadMe
 
 const generateReadMe = (answers) => {
-  const renderInstallation = (confirmInstall, projectInstall) => {
-    if (confirmInstall) {
-      return `## Installation Steps
-      ${projectInstall}`;
-    } else {
-      return "";
-    }
-  };
-  return `${answers.projectTitle}
-  ${renderInstallation(answers.confirmInstall, answers.projectInstall)}
-  `;
+  return `# ${answers.projectTitle} ![badge](${encodeURI(
+    `https://img.shields.io/badge/${answers.license}-license-green`
+  )})
+## Contents
+- [Description](#description)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+${answers.contributionConfirmation ? `- [Contributions](#contributions)` : ""}
+${answers.testConfirmation ? `- [Tests](#tests)` : ""}
+- [Questions](#questions)
+## Description
+${answers.description}
+## Installation
+\`\`\`
+${answers.installation}
+\`\`\`
+## Usage
+\`\`\`
+${answers.usage}
+\`\`\`
+## License
+${answers.license}
+${
+  answers.contributionConfirmation
+    ? `## Contributions
+${answers.contributions}`
+    : ""
+}
+${
+  answers.testConfirmation
+    ? `## Tests
+\`\`\`
+${answers.tests}
+\`\`\` `
+    : ""
+}
+## Questions
+Please contact me via email at ${
+    answers.emailAddress
+  } or via my GitHub repo at https://github.com/${answers.gitHubUsername}`;
 };
 
 const init = async () => {
   const answers = await inquirer.prompt(questions);
 
   const readMe = generateReadMe(answers);
-  console.log("readme", readMe);
+
+  fs.writeFileSync("GENERATED_README.md", readMe);
+
+  console.log(
+    figlet.textSync("README generated!", {
+      font: "Ghost",
+      horizontalLayout: "default",
+      verticalLayout: "default",
+      width: 40,
+      whitespaceBreak: true,
+    })
+  );
 };
 
 init();
