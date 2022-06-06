@@ -1,4 +1,4 @@
-# Test ![badge](https://img.shields.io/badge/Apache%202.0-license-green)
+# README.md ![badge](https://img.shields.io/badge/Apache%202.0-license-green)
 ## Contents
 - [Description](#description)
 - [Installation](#installation)
@@ -8,19 +8,19 @@
 
 - [Questions](#questions)
 ## Description
-It's a test...chill
+To create a beautiful README.md dynamically
 ## Installation
 ```
-all of them they're all very important
+npm install
 ```
 ## Usage
 ```
-the one that worksa
+npm start
 ```
 ## License
 Apache 2.0
 ## Contributions
-trust the process...
+Do the above and make a merge request
 
 ## Questions
-Please contact me via email at syntax errors or via my GitHub repo at https://github.com/undefined
+Please contact me via email at tanveer13a551@gmail.com or via my GitHub repo at https://github.com/TanveerBassi
